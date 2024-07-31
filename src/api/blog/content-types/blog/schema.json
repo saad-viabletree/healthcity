@@ -8,12 +8,13 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "author": {
       "type": "relation",
@@ -27,15 +28,19 @@
       "mappedBy": "blog"
     },
     "featured": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false,
+      "required": true
     },
     "blogDescription": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true,
+      "maxLength": 1000
     },
     "blogImg": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",

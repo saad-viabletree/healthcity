@@ -829,10 +829,10 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    title: Attribute.Text;
+    title: Attribute.Text & Attribute.Required;
     author: Attribute.Relation<
       'api::blog.blog',
       'oneToOne',
@@ -843,14 +843,20 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'oneToMany',
       'api::category.category'
     >;
-    featured: Attribute.Boolean;
-    blogDescription: Attribute.RichText;
-    blogImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    featured: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    blogDescription: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 1000;
+      }>;
+    blogImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
     viewCount: Attribute.Integer;
     tags: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::tag.tag'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
