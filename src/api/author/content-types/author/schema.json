@@ -13,12 +13,13 @@
   "pluginOptions": {},
   "attributes": {
     "authorName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "authorImg": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",

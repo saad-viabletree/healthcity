@@ -800,8 +800,9 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    authorName: Attribute.String;
-    authorImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    authorName: Attribute.String & Attribute.Required;
+    authorImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
     isVerified: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -876,7 +877,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required;
     blog: Attribute.Relation<
       'api::category.category',
       'manyToOne',
@@ -905,12 +906,13 @@ export interface ApiTagTag extends Schema.CollectionType {
     singularName: 'tag';
     pluralName: 'tags';
     displayName: 'Tag';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required;
     blogs: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::blog.blog'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
