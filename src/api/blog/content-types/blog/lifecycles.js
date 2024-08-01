@@ -19,9 +19,10 @@ module.exports = {
 
 
     async beforeUpdate(event) {
+      console.log("event", event)
         const tagsUpdated = await strapi.entityService.findOne(
             "api::blog.blog",
-            event.params.data.id,
+            event.params.where.id,
             {
               populate: [
                 "tags",
