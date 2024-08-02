@@ -804,6 +804,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     authorImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.Required;
     isVerified: Attribute.Boolean;
+    blogs: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::blog.blog'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -836,12 +841,12 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     title: Attribute.Text & Attribute.Required;
     author: Attribute.Relation<
       'api::blog.blog',
-      'oneToOne',
+      'manyToOne',
       'api::author.author'
     >;
     categories: Attribute.Relation<
       'api::blog.blog',
-      'oneToMany',
+      'manyToMany',
       'api::category.category'
     >;
     featured: Attribute.Boolean &
@@ -878,9 +883,9 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    blog: Attribute.Relation<
+    blogs: Attribute.Relation<
       'api::category.category',
-      'manyToOne',
+      'manyToMany',
       'api::blog.blog'
     >;
     createdAt: Attribute.DateTime;

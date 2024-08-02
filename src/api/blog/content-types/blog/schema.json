@@ -18,14 +18,15 @@
     },
     "author": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::author.author"
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "blogs"
     },
     "categories": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::category.category",
-      "mappedBy": "blog"
+      "mappedBy": "blogs"
     },
     "featured": {
       "type": "boolean",

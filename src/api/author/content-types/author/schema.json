@@ -29,6 +29,12 @@
     },
     "isVerified": {
       "type": "boolean"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog",
+      "mappedBy": "author"
     }
   }
 }
