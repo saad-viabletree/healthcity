@@ -852,11 +852,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     featured: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    blogDescription: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 1000;
-      }>;
+    blogDescription: Attribute.RichText & Attribute.Required;
     blogImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.Required;
     viewCount: Attribute.Integer;

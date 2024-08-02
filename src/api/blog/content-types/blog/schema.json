@@ -35,8 +35,7 @@
     },
     "blogDescription": {
       "type": "richtext",
-      "required": true,
-      "maxLength": 1000
+      "required": true
     },
     "blogImg": {
       "type": "media",
