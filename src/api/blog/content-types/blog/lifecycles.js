@@ -19,7 +19,7 @@ module.exports = {
 
 
     async beforeUpdate(event) {
-      console.log("event", event)
+      //console.log("event", event)
         const tagsUpdated = await strapi.entityService.findOne(
             "api::blog.blog",
             event.params.where.id,
@@ -55,8 +55,11 @@ module.exports = {
           } else if(tagsUpdated.categories.length === 0 && event.params.data.categories.disconnect.length === 1){
             throw new ApplicationError('Categories are required');
 
-          } else if(tagsUpdated.categories.length && tagsUpdated.categories.length === event.params.data.categories.disconnect.length){
+          } else if(tagsUpdated.categories.length && tagsUpdated.categories.length === event.params.data.categories.disconnect.length && event.params.data.categories.connect.length === 0){
 
+            console.log(tagsUpdated.categories);
+            console.log(event.params.data.categories.disconnect.length)
+            console.log(event.params.data.categories.connect.length)
             throw new ApplicationError('Categories are required');
 
 
