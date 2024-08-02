@@ -37,27 +37,39 @@ module.exports = {
             throw new ApplicationError('Tags not found');
               
             
+          } else if(tagsUpdated.tags.length === 0 && event.params.data.tags.disconnect.length === 1){
+            throw new ApplicationError('Tags are required');
+
+          } else if(tagsUpdated.tags.length && tagsUpdated.tags.length === event.params.data.tags.disconnect.length){
+
+            throw new ApplicationError('Tags are required');
+
+
           }
 
+          //Validating Categories
           if(tagsUpdated.categories.length === 0 && event.params.data.categories.connect.length === 0){
             throw new ApplicationError('Categories not found');
               
             
-          } else if(tagsUpdated.categories.length === 1 && event.params.data.author.disconnect.length === 1){
-            throw new ApplicationError('Categories is required');
+          } else if(tagsUpdated.categories.length === 0 && event.params.data.categories.disconnect.length === 1){
+            throw new ApplicationError('Categories are required');
+
+          } else if(tagsUpdated.categories.length && tagsUpdated.categories.length === event.params.data.categories.disconnect.length){
+
+            throw new ApplicationError('Categories are required');
+
 
           }
 
-            console.log(tagsUpdated.author);
-            console.log('disconnect', event.params.data.author.disconnect.length)
-            console.log('connect', event.params.data.author.connect.length)
+            
 
           if(!tagsUpdated.author && event.params.data.author.connect.length === 0){
             throw new ApplicationError('Author not found');
               
             
           }else if(!tagsUpdated.author && event.params.data.author.disconnect.length === 1) {
-            throw new ApplicationError('saad is here');
+            throw new ApplicationError('Author not found');
 
           }
           else if(tagsUpdated.author && event.params.data.author.disconnect.length === 1 && event.params.data.author.connect.length === 0){
