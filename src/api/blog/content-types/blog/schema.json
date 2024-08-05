@@ -56,6 +56,11 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "mappedBy": "blogs"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

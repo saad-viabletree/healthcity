@@ -857,6 +857,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       Attribute.Required;
     viewCount: Attribute.Integer;
     tags: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::tag.tag'>;
+    slug: Attribute.UID<'api::blog.blog', 'title'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
