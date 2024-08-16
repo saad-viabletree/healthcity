@@ -40,7 +40,7 @@ module.exports = {
           } else if(tagsUpdated.tags.length === 0 && event.params.data.tags.disconnect.length === 1){
             throw new ApplicationError('Tags are required');
 
-          } else if(tagsUpdated.tags.length && tagsUpdated.tags.length === event.params.data.tags.disconnect.length){
+          } else if(tagsUpdated.tags.length && tagsUpdated.tags.length === event.params.data.tags.disconnect.length && event.params.data.tags.connect.length === 0){
 
             throw new ApplicationError('Tags are required');
 
